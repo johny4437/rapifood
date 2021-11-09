@@ -25,7 +25,7 @@ mongoose.connect(process.env.DB_URL
 
 ).then(()=> console.log("DB connected"))
 
-
-app.listen(4000, ()=>{
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, ()=>{
     console.log("SERVER IS RUNNING ON http://127.0.0.1:4000")
 })
