@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path =  require('path')
 require('dotenv').config()
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -10,7 +11,10 @@ const orderRoute = require('./routes/order');
 app.use(cors({origin:'*'}))
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}));
+app.use("/files",
+    express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
+)
 
 app.use(userRoute);
 app.use(productRoute);
